@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Black Arc Development — Portfolio</title>
+<meta name="description" content="Black Arc Development is an independent studio building web platforms, tools, and game modifications.">
+<link rel="icon" type="image/png" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/favicon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/logo-nav.png" alt="Black Arc Development logo">
+      <span class="brand-text">BLACK ARC<span>DEVELOPMENT</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="web-development.html">Web Development</a></li>
+      <li><a href="mods-scripting.html">Mods &amp; Scripting</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-arc-glow" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero-logo">
+      <img src="assets/logo-hero.png" alt="Black Arc Development">
+    </div>
+    <p class="eyebrow hero-eyebrow">Independent Development Studio</p>
+    <h1>Building software worth <span class="accent">shipping</span> — one discipline at a time.</h1>
+    <p class="lede">A portfolio of original work spanning web platforms and game tooling, with software, security, and game development on the way as each discipline comes online.</p>
+    <div class="hero-cta">
+      <a href="#work" class="btn btn-primary">View Projects</a>
+      <a href="https://github.com/" target="_blank" rel="noopener" class="btn btn-ghost">GitHub ↗</a>
+    </div>
+  </div>
+</header>
+
+<svg class="arc-divider" viewBox="0 0 1200 70" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0,64 Q600,4 1200,64" />
+  <circle cx="600" cy="4" r="4" />
+</svg>
+
+<section class="section" id="disciplines">
+  <div class="container">
+    <p class="eyebrow">Disciplines</p>
+    <div class="section-head">
+      <h2>Five wings, one studio.</h2>
+      <p>Black Arc Development is organized by discipline. Two are live. The rest come online as new work ships.</p>
+    </div>
+
+    <div class="disciplines">
+      <a href="web-development.html" class="discipline active">
+        <span class="num">01</span>
+        <h4>Web Development</h4>
+        <p>Company &amp; product websites</p>
+      </a>
+      <a href="mods-scripting.html" class="discipline active">
+        <span class="num">02</span>
+        <h4>Mods &amp; Scripting</h4>
+        <p>Game modifications &amp; tooling</p>
+      </a>
+      <div class="discipline locked">
+        <span class="num">03</span>
+        <h4>Software</h4>
+        <p>Coming soon</p>
+      </div>
+      <div class="discipline locked">
+        <span class="num">04</span>
+        <h4>Security</h4>
+        <p>Coming soon</p>
+      </div>
+      <div class="discipline locked">
+        <span class="num">05</span>
+        <h4>Games</h4>
+        <p>Coming soon</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="work">
+  <div class="container">
+    <p class="eyebrow">Selected Work</p>
+    <div class="section-head">
+      <h2>Featured projects</h2>
+      <p>A running log of what's shipped and what's in progress.</p>
+    </div>
+
+    <div class="grid">
+
+      <!-- TNFC -->
+      <div class="card">
+        <svg class="card-trace" preserveAspectRatio="none"><rect x="1" y="1" width="99%" height="98%" rx="3"/></svg>
+        <div class="card-top">
+          <span class="card-status live">Live</span>
+          <div class="card-mark">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16v16H4z"/><path d="M4 9h16M9 4v16"/></svg>
+          </div>
+        </div>
+        <div class="category">Web Development</div>
+        <h3>TNFC</h3>
+        <p class="desc">Company website built end-to-end — structure, styling, and content, designed to represent the brand professionally online.</p>
+        <div class="tags">
+          <span class="tag">HTML/CSS/JS</span>
+          <span class="tag">Responsive</span>
+        </div>
+        <div class="card-links">
+          <a href="#" target="_blank" rel="noopener">Visit Site ↗</a>
+          <a href="#" target="_blank" rel="noopener">Source ↗</a>
+        </div>
+      </div>
+
+      <!-- BAD MODS -->
+      <div class="card">
+        <svg class="card-trace" preserveAspectRatio="none"><rect x="1" y="1" width="99%" height="98%" rx="3"/></svg>
+        <div class="card-top">
+          <span class="card-status progress">In Development</span>
+          <div class="card-mark">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l3 6 6 1-4.5 4.5L18 20l-6-3-6 3 1.5-6.5L3 9l6-1z"/></svg>
+          </div>
+        </div>
+        <div class="category">Mods &amp; Scripting</div>
+        <h3>BAD MODS</h3>
+        <p class="desc">A growing collection of game modifications and scripts, built for performance and clean integration.</p>
+        <div class="tags">
+          <span class="tag">Modding</span>
+          <span class="tag">Scripting</span>
+        </div>
+        <div class="card-links">
+          <a href="#" target="_blank" rel="noopener">Repository ↗</a>
+        </div>
+      </div>
+
+      <!-- Placeholder -->
+      <div class="card placeholder">
+        <div>
+          <p class="eyebrow">Next Up</p>
+          <p>New projects land here as each discipline goes live — software, security, and games are next.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <img src="assets/logo-nav.png" alt="Black Arc Development">
+      <span>© 2026 Black Arc Development. All rights reserved.</span>
+    </div>
+    <ul class="footer-links">
+      <li><a href="https://github.com/" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="mailto:hello@blackarcdevelopment.com">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
