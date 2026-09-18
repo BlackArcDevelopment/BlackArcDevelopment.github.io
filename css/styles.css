@@ -553,6 +553,13 @@ body {
   border-color: var(--arc);
 }
 
+.card-note {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-style: italic;
+  color: var(--text-tertiary);
+}
+
 /* Placeholder / coming soon card */
 
 .card.placeholder {
