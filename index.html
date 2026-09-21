@@ -1,5 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+</head>
+<body>
 <title>BAD OS</title>
 <style>
+  /* A `hidden` attribute alone doesn't beat a class's own display:flex/block
+     — every component that toggles `.hidden` on an element (windows, the
+     start-menu search results, the selection marquee, etc.) depends on this
+     one rule to actually disappear. Must stay global, not per-component. */
+  [hidden]{ display:none !important; }
+
   /* ── Design tokens ──────────────────────────────────────────────
      Single committed visual world (void + arc glow) — intentionally
      not theme-adaptive; every color is painted explicitly so the
@@ -463,7 +476,6 @@
     overflow:hidden;
     min-width:320px; min-height:220px;
   }
-  .window[hidden]{ display:none; }
   .window.maximized{ border-radius:0; }
   .window.dragging{ user-select:none; }
 
@@ -1081,6 +1093,25 @@
   var iconsWrap = document.getElementById('icons');
   var suppressNextClick = false;
 
+  // Native `dblclick` is unreliable on touch — mobile browsers often need a
+  // real double-tap gesture to synthesize it, and it can be swallowed by
+  // scroll/zoom handling entirely. Detecting two `click` events (which fire
+  // for both a mouse double-click and a double-tap) within a short window
+  // works the same everywhere, so every "open on double-click" control uses
+  // this instead of listening for `dblclick` directly.
+  function bindActivate(el, handler){
+    var lastTap = 0;
+    el.addEventListener('click', function(e){
+      var now = Date.now();
+      if (now - lastTap < 450){
+        lastTap = 0;
+        handler(e);
+      } else {
+        lastTap = now;
+      }
+    });
+  }
+
   function launch(icon, opts){
     opts = opts || {};
     // Opening something clears the highlight, like a normal desktop — only
@@ -1125,7 +1156,7 @@
       icons.forEach(function(i){ if (i !== icon) i.classList.remove('selected'); });
       icon.classList.toggle('selected');
     });
-    icon.addEventListener('dblclick', function(e){ e.preventDefault(); activateIcon(icon); });
+    bindActivate(icon, function(e){ e.preventDefault(); activateIcon(icon); });
     icon.addEventListener('keydown', function(e){
       if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); activateIcon(icon); }
     });
@@ -1727,7 +1758,7 @@
     tag.textContent = tagText;
     btn.appendChild(tag);
 
-    btn.addEventListener('dblclick', onOpen);
+    bindActivate(btn, onOpen);
     return btn;
   }
 
@@ -2165,3 +2196,6 @@
   } catch(e){}
 })();
 </script>
+
+</body>
+</html>
