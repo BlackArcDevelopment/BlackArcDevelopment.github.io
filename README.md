@@ -1,1 +1,1 @@
-# Black Arc Development — BAD OS - Portfolio Site
+# Black Arc Development — BAD OS — Portfolio Site
