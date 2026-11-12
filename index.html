@@ -3,8 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-</head>
-<body>
 <title>BAD OS</title>
 <style>
   /* A `hidden` attribute alone doesn't beat a class's own display:flex/block
@@ -679,7 +677,7 @@
   /* ── Power flash — a quick blackout/fade-back-in placeholder until real
      shutdown/restart behavior gets designed ─────────────────────────── */
   .power-flash{
-    position:fixed; inset:0; z-index:60;
+    position:fixed; inset:0; z-index:99999;
     background:#000; opacity:0; pointer-events:none;
     transition:opacity .35s ease;
   }
@@ -736,6 +734,8 @@
     .icon.launching .icon-glyph{ animation:none; }
   }
 </style>
+</head>
+<body>
 
 <div class="desktop"></div>
 <div class="taskbar-glow"></div>
@@ -1545,6 +1545,10 @@
   // through this one function instead of reimplementing it per-window.
   var taskbarApps = document.getElementById('taskbar-apps');
 
+  // Shared stacking counter: whichever window was opened or clicked most
+  // recently gets the next-highest z-index, so it always lands on top.
+  var topZ = 20;
+
   function wireWindowChrome(win, opts){
     opts = opts || {};
     var titlebar = win.querySelector('.win-titlebar');
@@ -1553,7 +1557,9 @@
     var closeBtn = win.querySelector('.win-close');
     var state = { maximized: false, prevRect: null };
 
-    function focus(){ win.style.zIndex = '21'; }
+    function focus(){
+      if (win.style.zIndex !== String(topZ)) win.style.zIndex = String(++topZ);
+    }
     function applyRect(r){
       win.style.left = r.left + 'px'; win.style.top = r.top + 'px';
       win.style.width = r.width + 'px'; win.style.height = r.height + 'px';
@@ -2185,15 +2191,6 @@
     if (except !== 'volume') closeVolumePopup();
     if (except !== 'calendar') closeCalendar();
   }
-
-  try {
-    if (window.claude && window.claude.hot){
-      var snap = function(){ return { query: input ? input.value : '' }; };
-      window.claude.hot.snapshot(snap);
-      var boot = function(data){ if (input && data && data.query){ input.value = data.query; clearBtn.hidden = false; } };
-      window.claude.hot.ready ? window.claude.hot.ready(boot) : boot(window.claude.hot.data || {});
-    }
-  } catch(e){}
 })();
 </script>
 
